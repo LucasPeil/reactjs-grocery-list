@@ -1,0 +1,24 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.fatherDiv{
+  background-color: #d9f1ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 10em;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
