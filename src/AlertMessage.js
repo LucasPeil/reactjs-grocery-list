@@ -1,11 +1,16 @@
 
 import style from "./alertMessage.module.css"
-const alertMessage = () => {  
-  return (
-    <div>
-    <h1>Alert message!!</h1>
-    </div>
-  )
-}
+import {useEffect} from "react"
 
-export default alertMessage
+const AlertMessage = ({type,content, removeAlert,list}) => {
+  // NÃO ESTA PASSANDO AS COISAS PELO PROPS
+  useEffect(()=>{
+    const timeout = setTimeout(()=>{
+      removeAlert();
+    }, 3000);
+    return clearTimeout(timeout)
+  }, [list]);
+  return <p className={`alert alert-${type}`}>A</p>
+};
+
+export default AlertMessage
