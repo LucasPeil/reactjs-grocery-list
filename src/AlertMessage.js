@@ -8,9 +8,9 @@ const AlertMessage = ({type,content, removeAlert,list}) => {
     const timeout = setTimeout(()=>{
       removeAlert();
     }, 3000);
-    return clearTimeout(timeout)
-  }, [list]);
-  return <p className={`alert alert-${type}`}>A</p>
+    return () =>clearTimeout(timeout)
+  }, [list,removeAlert]);
+  return <p className={`alert alert-${type}`}>{content}</p>
 };
 
-export default AlertMessage
+export default AlertMessage;
