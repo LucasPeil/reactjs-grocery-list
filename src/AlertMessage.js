@@ -1,5 +1,5 @@
 
-import style from "./alertMessage.module.css"
+import "./alertMessage.module.css"
 import {useEffect} from "react"
 
 const AlertMessage = ({type,content, removeAlert,list}) => {
