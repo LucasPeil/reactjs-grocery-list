@@ -4,23 +4,34 @@ const List = ({list, editItem,removeItem})=>{
     return (
         <div>
             {editingItem && 
-                <article>
-                <p>{editingItem.title}</p>
-                <button onClick={()=>editItem(editingItem.id)}> <FaEdit/></button>
-                <button onClick={()=> removeItem(editingItem.id)}> <FaTrash/></button>
+                <article className="mt-3 d-flex justify-content-between ">
+                    <div >
+                        <p className="mt-1">{editingItem.title}</p>
+                    </div>
+                    <div >
+                        <button className="btn-edit"  onClick={()=>editItem(editingItem.id)}> < FaEdit /></button>
+                        <button className="btn-delete" onClick={()=> removeItem(editingItem.id)}> <FaTrash/></button>
+                    </div>
+               
                 </article>
             }
 
             {!editingItem && list.map((item)=>{
                 const {id,title}= item;
                 return(
-                    <article key={id}>
-                    <p>{title}</p>
-                    <button onClick={()=>editItem(id)}> <FaEdit/></button>
-                    <button onClick={()=> removeItem(id)}> <FaTrash/></button>
-                    </article>
+                <article className="mt-3 d-flex justify-content-between " key={id}>
+                    <div className="listItem">
+                        <p className="">{title}</p> 
+                    </div>
+                    <div >                   
+                        <button className="btn-edit"  onClick={()=>editItem(id)}> < FaEdit /></button>
+                        <button className="btn-delete" onClick={()=> removeItem(id)}> <FaTrash/></button>
+                    </div>
+                
+                </article>
                 )
             })}
+            
 
         </div>
      

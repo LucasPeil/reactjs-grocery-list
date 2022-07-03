@@ -3,6 +3,7 @@ import './App.css';
 import AlertMessage from './AlertMessage';
 import List from './List';
 
+
 const getLocalStorage = ()=>{
   let list = localStorage.getItem("list");
   if(list){
@@ -13,6 +14,7 @@ const getLocalStorage = ()=>{
 }
 
 function App() {
+
 const [name, setName] = useState("")
 const [list, setList] = useState(getLocalStorage());
 const [alert, setAlert] = useState({show:false, type:"", content:""});
@@ -28,7 +30,7 @@ const handleSubmit = (e)=>{
   e.preventDefault();
   
   if(!name){
-    showAlertMessage(true, "danger", "O nome do name é obrigatorio!");
+    showAlertMessage(true, "danger", "Adicione um item.");
     console.log(`hello ${alert}`);
   }else if(name && isEditing){
 
@@ -37,7 +39,8 @@ const handleSubmit = (e)=>{
     if(item.id === elementEditedId){
       item.currentlyEditing = false;
       return {...item, title:name}
-    } 
+    }
+    showAlertMessage(true, "success", `item editado.`); 
     return item;
 
    }))
@@ -62,13 +65,14 @@ const editItem = (id)=>{
   setName(product.title);
 }
 const removeItem = (id)=>{
-  showAlertMessage(true, "success", `Item removed`);
+  showAlertMessage(true, "danger", `Item removido.`);
   setList(list.filter((item)=>{ return item.id !== id}));
-  
+  setName("");
+  setIsEditing(false)
 }
 
 const clearList = ()=>{
-  showAlertMessage(true, "danger", "List is empty");
+  showAlertMessage(true, "danger", "Lista excluída.");
   setList([]);
 }
 useEffect(()=>{
@@ -78,17 +82,22 @@ useEffect(()=>{
 return (
     <div className='fatherDiv' >
     
-    <main >
+    <main className='container position-relative'>
+    
+      <div className="row ">
+        <div className="col-6 offset-3 bord p-5  ">
         {alert.show && <AlertMessage {...alert} removeAlert={showAlertMessage} list/>}
         <form onSubmit={handleSubmit}>
-              <label>
-                <span>What you to buy?</span>
-                <input type="text" placeholder="Exemplo: Leite" onChange={(e)=>setName(e.target.value)} value={name} />
-                <button>{isEditing ? "edit": "submit"}</button>
-            </label>
+              <label className='d-block' for="item"> Lista de compras</label>
+              <input  id="item" type="text" placeholder="Exemplo: Pão..." onChange={(e)=>setName(e.target.value)} value={name} />
+              <button className='appButton'>{isEditing ? "Edit": "Submit"}</button>
         </form>
         { list.length> 0 && (<List list={list} editItem = {editItem} removeItem={removeItem}/>)}
-        {list.length>0 && !isEditing && <button onClick={clearList}>Clear all itens of the list</button>}
+        {list.length>0 && !isEditing && <a className='fw-semibold' onClick={clearList}>Clear all itens of the list</a>}
+        </div>
+      
+      </div>
+        
     </main>
     
     </div>

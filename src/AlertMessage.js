@@ -1,5 +1,5 @@
 
-import "./alertMessage.module.css"
+
 import {useEffect} from "react"
 
 const AlertMessage = ({type,content, removeAlert,list}) => {
@@ -10,7 +10,7 @@ const AlertMessage = ({type,content, removeAlert,list}) => {
     }, 3000);
     return () =>clearTimeout(timeout)
   }, [list,removeAlert]);
-  return <p className={`alert alert-${type}`}>{content}</p>
+  return <p className={`alert alert-${type} alert-message`}>{content}</p>
 };
 
 export default AlertMessage;
