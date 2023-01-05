@@ -93,7 +93,10 @@ return (
               <button className='appButton'>{isEditing ? "Edit": "Submit"}</button>
         </form>
         { list.length> 0 && (<List list={list} editItem = {editItem} removeItem={removeItem}/>)}
-        {list.length>0 && !isEditing && <a className='fw-semibold' onClick={clearList}>Clear all itens of the list</a>}
+        <div className='d-flex flex-row justify-content-center mt-3'>
+        {list.length>0 && !isEditing && <span className='fw-semibold clickable' onClick={clearList}>Limpar lista</span>}
+        </div>
+        
         </div>
       
       </div>

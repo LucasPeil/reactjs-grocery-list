@@ -1,6 +1,6 @@
 import {FaEdit, FaTrash} from "react-icons/fa"
 const List = ({list, editItem,removeItem})=>{
-    const editingItem = list.find((item)=> item.currentlyEditing == true)
+    const editingItem = list.find((item)=> item.currentlyEditing === true)
     return (
         <div>
             {editingItem && 
